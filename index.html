@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap" rel="stylesheet">
+  
+  <title>Frontend Mentor | IP Address Tracker</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <div class="ip-tracker">
+
+    <h1 class="ip-tracker__title">IP Address Tracker</h1>
+
+    <form action="" class="ip-tracker__form">
+      <input type="text" name="ip" id="ip" placeholder="Search for any IP address or domain">
+      <button type="submit" id="search__btn"><svg xmlns="http://www.w3.org/2000/svg" width="11" height="14"><path fill="none" stroke="#FFF" stroke-width="3" d="M2 1l6 6-6 6"/></svg></button>
+    </form>
+
+    <div class="ip-tracker__data__content">
+      <div class="ip-tracker__data">
+        <h4>IP ADDRESS</h4>
+        <p class="ip_data">192.212.174.101</p>
+      </div>
+      <div class="ip-tracker__data">
+        <h4>LOCATION</h4>
+        <p class="location_data">Brooklyn, NY 10001</p>
+      </div>
+      <div class="ip-tracker__data">
+        <h4>TIMEZONE</h4>
+        <p class="timezone_data">UTC-05:00</p>
+      </div>
+      <div class="ip-tracker__data">
+        <h4>ISP</h4>
+        <p class="isp_data">SpaceX Starlink</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="map">
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quidem, voluptate! Earum obcaecati tenetur at mollitia quae odio sed assumenda voluptatem? Error eos sequi labore repudiandae quo quaerat, illum voluptatibus dolore?</p>
+  </div>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div>
+
+  <script src="app.js"></script>
+  <script src="https://api.ipify.org?format=jsonp&callback=getip"></script>
+</body>
+</html>

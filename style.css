@@ -1,0 +1,103 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --very-dark-gray: hsl(0, 0%, 17%);
+  --dark-gray: hsl(0, 0%, 59%);
+}
+
+html {
+  font-size: 18px;
+  font-family: "Rubik", sans-serif;
+}
+
+body {
+  background: url("images/pattern-bg.png") #DDD no-repeat top center;
+  position: relative;
+}
+
+.ip-tracker {
+  margin: 0 auto;
+  padding: 30px 24px 0;
+  max-width: 1440px;
+}
+.ip-tracker__title {
+  margin-bottom: 24px;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
+  color: #FFF;
+}
+.ip-tracker__form {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+.ip-tracker #ip {
+  min-width: 269px;
+  padding: 22px;
+  border: none;
+  height: 58px;
+  border-top-left-radius: 14px;
+  border-bottom-left-radius: 14px;
+  font-size: 18px;
+}
+.ip-tracker #ip:focus {
+  outline-offset: 0px;
+  outline: none;
+}
+.ip-tracker #ip::placeholder {
+  color: var(--dark-gray);
+}
+.ip-tracker #search__btn {
+  padding: 21px 24px;
+  border: none;
+  background: #000;
+  border-top-right-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+.ip-tracker__data__content {
+  padding: 28px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #fff;
+  border-radius: 14px;
+}
+.ip-tracker__data {
+  margin-bottom: 30px;
+  text-align: center;
+}
+.ip-tracker__data h4 {
+  padding-bottom: 14px;
+  font-size: 10px;
+  font-weight: 500;
+  color: var(--dark-gray);
+  letter-spacing: 1.42px;
+}
+.ip-tracker__data p {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.ip-tracker__data:last-child {
+  margin-bottom: 0;
+}
+
+#map {
+  position: absolute;
+  top: 250px;
+  z-index: -1;
+  height: 100vh;
+  background: green;
+}
+
+/*# sourceMappingURL=style.css.map */
