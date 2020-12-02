@@ -21,6 +21,7 @@ html {
 
 body {
   background: url("images/pattern-bg.png") #DDD no-repeat top center;
+  background-size: contain;
 }
 
 .error {
