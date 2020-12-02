@@ -21,6 +21,18 @@ html {
 
 body {
   background: url("images/pattern-bg.png") #DDD no-repeat top center;
+}
+
+.error {
+  color: #F00;
+  background-color: #FFF;
+  padding: 10px 0;
+  text-align: center;
+  font-size: 14px;
+}
+
+.ip-tracker-wrapper {
+  height: 250px;
   position: relative;
 }
 
@@ -28,6 +40,10 @@ body {
   margin: 0 auto;
   padding: 30px 24px 0;
   max-width: 1440px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
 }
 .ip-tracker__title {
   margin-bottom: 24px;
@@ -50,7 +66,8 @@ body {
   border-bottom-left-radius: 14px;
   font-size: 18px;
 }
-.ip-tracker #ip:focus {
+.ip-tracker #ip:focus,
+.ip-tracker #search__btn:focus {
   outline-offset: 0px;
   outline: none;
 }
@@ -65,7 +82,7 @@ body {
   border-bottom-right-radius: 14px;
 }
 .ip-tracker__data__content {
-  padding: 28px 0;
+  padding: 28px 30px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -93,11 +110,27 @@ body {
 }
 
 #map {
-  position: absolute;
-  top: 250px;
-  z-index: -1;
   height: 100vh;
-  background: green;
+}
+
+@media screen and (min-width: 1440px) {
+  .ip-tracker__data__content {
+    padding: 20px 0px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .ip-tracker__data {
+    width: 250px;
+    margin-bottom: 0;
+    padding: 0 20px;
+    text-align: left;
+    border-right: 1px solid #D8D8D8;
+  }
+
+  .ip-tracker__data:last-child {
+    border-right: none;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

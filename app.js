@@ -5,15 +5,19 @@ function getip(reponse) {
 
 document.querySelector('.ip-tracker__form').addEventListener('submit', function(e) {
     const ipField = document.querySelector('#ip').value;
-    xhr(ipField);
+    let search = defineSearch();
+    xhr(ipField, search);
     e.preventDefault();
 })
 
-// 73.85.229.237
-
-function xhr(ip) {  
+function xhr(ip, urlAppend) {
+    let url = '';
     const api_key = 'at_1Pokw2l7ogfzCbZ9GY9j4uRsfpolD';
-    const url = `https://geo.ipify.org/api/v1?apiKey=${api_key}&ipAddress=${ip}`;
+    if(urlAppend) {
+        url = `https://geo.ipify.org/api/v1?apiKey=${api_key}${urlAppend}`;
+    } else {
+        url = `https://geo.ipify.org/api/v1?apiKey=${api_key}`;
+    }
 
     const xhr = new XMLHttpRequest();
 
@@ -24,6 +28,10 @@ function xhr(ip) {
             const data = JSON.parse(xhr.responseText)
             // console.table(data);
             ipData(data);
+
+            // to initialize the map again
+            initializingMap();
+            displayMap(data);
         }
     }
     xhr.send();
@@ -48,7 +56,89 @@ function ipData(data) {
     ispData.innerHTML = `${data.isp}`;
 }
 
+function displayMap(data) {
+    var mymap = L.map('map').setView([`${data.location.lat}`, `${data.location.lng}`], 13);
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 18,
+        id: 'mapbox/streets-v11',
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiYW5kcmVzLWd1ZXJyZXJvIiwiYSI6ImNraHYyazluYTB6a28yem4zZHQ5Yjd0aDYifQ.1wjPg4323HXwnB9EbuwguQ'
+    }).addTo(mymap);
 
+    var myIcon = L.icon({
+        iconUrl: 'images/pointer@2x.png',
+        iconSize: [68, 64],
+        iconAnchor: [22, 94],
+        popupAnchor: [-3, -76],
+        shadowSize: [50, 52],
+        shadowAnchor: [22, 94]
+    });
+    
+    L.marker([`${data.location.lat}`, `${data.location.lng}`], {icon: myIcon}).addTo(mymap);
+}
+
+function initializingMap() {
+    var container = L.DomUtil.get('map');
+    if(container != null){
+        container._leaflet_id = null;
+    }
+}
+
+function validateEmail(email) {
+    let re = /\S+@\S+\.\S+/;
+    if (re.test(email)) {
+        return email;
+    }
+}
+
+function validateDomain(domain) {
+    let regExp = /^(?:(?:(?:[a-zA-z\-]+)\:\/{1,3})?(?:[a-zA-Z0-9])(?:[a-zA-Z0-9\-\.]){1,61}(?:\.[a-zA-Z]{2,})+|\[(?:(?:(?:[a-fA-F0-9]){1,4})(?::(?:[a-fA-F0-9]){1,4}){7}|::1|::)\]|(?:(?:[0-9]{1,3})(?:\.[0-9]{1,3}){3}))(?:\:[0-9]{1,5})?$/;
+    if(regExp.test(domain)) {
+        return domain;
+    }
+}
+
+function validateIP(ip) {
+    let regExp = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;
+    if(regExp.test(ip)) {
+        return ip;
+    }
+}
+
+function defineSearch() {
+    const search = document.querySelector('#ip').value;
+    let urlAppend = '';
+    if(validateEmail(search)) {
+        urlAppend = `&email=${search}`;
+    } else if(validateDomain(search)) {
+        urlAppend = `&domain=${search}`;
+    } else if(validateIP(search)) {
+        urlAppend = `&ipAddress=${search}`;
+    } else {
+        errorMessage()
+    }
+    return urlAppend;
+}
+
+function errorMessage() {
+    const container = document.querySelector('.ip-tracker-wrapper');
+    const formContainer = document.querySelector('.ip-tracker');
+    const div = document.createElement('div');
+    div.classList = 'error';
+    div.appendChild(document.createTextNode('Input correct search term'));
+    container.insertBefore(div, formContainer);
+
+    setTimeout(clearError, 3000);
+}
+
+function clearError() {
+    const error = document.querySelector('.error');
+    if(error) {
+        document.querySelector('.error').remove();
+    }
+}
 
 const states = [
     {
