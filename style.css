@@ -19,10 +19,10 @@ html {
   font-family: "Rubik", sans-serif;
 }
 
-body {
+/*body {
   background: url("images/pattern-bg.png") #DDD no-repeat top center;
   background-size: contain;
-}
+}*/
 
 .error {
   color: #F00;
@@ -35,6 +35,8 @@ body {
 .ip-tracker-wrapper {
   height: 250px;
   position: relative;
+  background: url(images/pattern-bg.png) #DDD no-repeat top center;
+  background-size: cover;
 }
 
 .ip-tracker {
